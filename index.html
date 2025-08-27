@@ -20,43 +20,235 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <header class="flex items-center justify-between p-5">
-      <div class="header_left flex">
-        <img class="w-12 mr-2" src="./assets/logo.png" alt="" />
-        <p class="font-bold text-green-700">
-          Emergency <br />
-          Service
-        </p>
-      </div>
-      <div class="header_right flex">
-        <div class="flex mr-5 bg-[#41ff6b1a] p-4 rounded-[30px]">
-          <p class="font-bold">0</p>
-          <img class="w-7 ml-3" src="./assets/heart.png" alt="" />
-        </div>
-        <div class="flex mr-5 bg-[#41ff6b1a] p-4 rounded-[30px]">
-          <p class="font-bold">100</p>
-          <img class="w-7 ml-3" src="./assets/coin.png" alt="" />
-        </div>
-        <button
-          class="mr-5 bg-green-800 text-white px-7 rounded-[10px]"
-          id="copy_btn"
-        >
-          Copy
-        </button>
-      </div>
-    </header>
+  <body class="bg-[#f5fff6]">
+<header class="flex flex-col md:flex-row justify-between items-center p-4">
+  <!-- Left Side -->
+  <div class="header_left flex items-center mb-4 md:mb-0">
+    <img class="w-12 mr-2" src="./assets/logo.png" alt="" />
+    <p class="font-bold text-green-700 text-lg">Emergency Service</p>
+  </div>
 
+  <!-- Right Side -->
+  <div class="header_right flex flex-wrap justify-center md:justify-end">
+    <div class="flex items-center mr-5 bg-[#41ff6b1a] p-4 rounded-[30px]">
+      <p class="font-bold">0</p>
+      <img class="w-7 ml-3" src="./assets/heart.png" alt="" />
+    </div>
+    <div class="flex items-center mr-5 bg-[#41ff6b1a] p-4 rounded-[30px]">
+      <p class="font-bold">100</p>
+      <img class="w-7 ml-3" src="./assets/coin.png" alt="" />
+    </div>
+    <button
+      class="mr-5 bg-green-800 text-white px-7 py-2 rounded-[10px]"
+      id="copy_btn"
+    >
+      Copy
+    </button>
+  </div>
+</header>
     <main>
-      <section class="p-[50px] bg-green-800">
+      <!-- <section> First section </section> -->
+      <section class="p-[70px] bg-green-800">
         <div class="first_section items-center justify-center text-center">
           <img class="mx-auto w-[300px]" src="./assets/logo-dark.png" alt="" />
-          <h1 class="font-bold text-white text-3xl mt-5 mb-5">Emergency Service Directory</h1>
+          <h1 class="font-bold text-white text-3xl mt-5 mb-5">
+            Emergency Service Directory
+          </h1>
           <p class="text-white font-semibold">
             Government Emergency Services at Your Fingertip – A Project by
             Government of the People’s Republic of Bangladesh
           </p>
+        </div>
+      </section>
+
+      <!-- Card Section  -->
+      <section class="mt-[55px] container mx-auto">
+        <div class="card_div grid grid-cols-1 md:grid-cols-[70%_30%] gap-4 ">
+          <div class="card_left_div mx-auto  grid grid-cols-1 md:grid-cols-3 gap-6 ">
+            <div class="card bg-base-100 w-70 shadow-2xl p-5">
+              <div class="flex justify-between items-center">
+                <img class="w-10" src="./assets/emergency.png" alt="Shoes" />
+                <i class="fa-regular fa-heart text-2xl"></i>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title font-bold">Emergency Help Service</h2>
+                <p class="text-gray-400">Service titel</p>
+                <h4 class="card-title text-lg">999</h4>
+                <span class="w-17 bg-slate-300 text-gray-400 px-2 py-1 rounded-xl">Univesal</span>
+                <div class="card-actions justify-evenly mb-4">
+                  <div class="badge badge-outline px-5 py-4 font-semibold">
+                    <i class="fa-solid fa-copy"></i>Copy
+                  </div>
+                  <div class="badge badge-outline px-7 py-4 bg-[#00a63e] text-white">
+                    <i class="fa-solid fa-phone"></i>Call
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card bg-base-100 w-70 shadow-2xl p-5">
+              <div class="flex justify-between items-center">
+                <img class="w-10" src="./assets/emergency.png" alt="Shoes" />
+                <i class="fa-regular fa-heart text-2xl"></i>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title font-bold">Emergency Help Service</h2>
+                <p class="text-gray-400"></p>
+                <h4 class="card-title text-lg">999</h4>
+                <span class="w-17 bg-slate-300 text-gray-400 px-2 py-1 rounded-xl">Univesal</span>
+                <div class="card-actions justify-evenly mb-4">
+                  <div class="badge badge-outline px-5 py-4 font-semibold">
+                    <i class="fa-solid fa-copy"></i>Copy
+                  </div>
+                  <div class="badge badge-outline px-7 py-4 bg-[#00a63e] text-white">
+                    <i class="fa-solid fa-phone"></i>Call
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card bg-base-100 w-70 shadow-2xl p-5">
+              <div class="flex justify-between items-center">
+                <img class="w-10" src="./assets/emergency.png" alt="Shoes" />
+                <i class="fa-regular fa-heart text-2xl"></i>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title font-bold">Emergency Help Service</h2>
+                <p class="text-gray-400"></p>
+                <h4 class="card-title text-lg">999</h4>
+                <span class="w-17 bg-slate-300 text-gray-400 px-2 py-1 rounded-xl">Univesal</span>
+                <div class="card-actions justify-evenly mb-4">
+                  <div class="badge badge-outline px-5 py-4 font-semibold">
+                    <i class="fa-solid fa-copy"></i>Copy
+                  </div>
+                  <div class="badge badge-outline px-7 py-4 bg-[#00a63e] text-white">
+                    <i class="fa-solid fa-phone"></i>Call
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card bg-base-100 w-70 shadow-2xl p-5">
+              <div class="flex justify-between items-center">
+                <img class="w-10" src="./assets/emergency.png" alt="Shoes" />
+                <i class="fa-regular fa-heart text-2xl"></i>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title font-bold">Emergency Help Service</h2>
+                <p class="text-gray-400"></p>
+                <h4 class="card-title text-lg">999</h4>
+                <span class="w-17 bg-slate-300 text-gray-400 px-2 py-1 rounded-xl">Univesal</span>
+                <div class="card-actions justify-evenly mb-4">
+                  <div class="badge badge-outline px-5 py-4 font-semibold">
+                    <i class="fa-solid fa-copy"></i>Copy
+                  </div>
+                  <div class="badge badge-outline px-7 py-4 bg-[#00a63e] text-white">
+                    <i class="fa-solid fa-phone"></i>Call
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card bg-base-100 w-70 shadow-2xl p-5">
+              <div class="flex justify-between items-center">
+                <img class="w-10" src="./assets/emergency.png" alt="Shoes" />
+                <i class="fa-regular fa-heart text-2xl"></i>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title font-bold">Emergency Help Service</h2>
+                <p class="text-gray-400"></p>
+                <h4 class="card-title text-lg">999</h4>
+                <span class="w-17 bg-slate-300 text-gray-400 px-2 py-1 rounded-xl">Univesal</span>
+                <div class="card-actions justify-evenly mb-4">
+                  <div class="badge badge-outline px-5 py-4 font-semibold">
+                    <i class="fa-solid fa-copy"></i>Copy
+                  </div>
+                  <div class="badge badge-outline px-7 py-4 bg-[#00a63e] text-white">
+                    <i class="fa-solid fa-phone"></i>Call
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card bg-base-100 w-70 shadow-2xl p-5">
+              <div class="flex justify-between items-center">
+                <img class="w-10" src="./assets/emergency.png" alt="Shoes" />
+                <i class="fa-regular fa-heart text-2xl"></i>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title font-bold">Emergency Help Service</h2>
+                <p class="text-gray-400"></p>
+                <h4 class="card-title text-lg">999</h4>
+                <span class="w-17 bg-slate-300 text-gray-400 px-2 py-1 rounded-x l">Univesal</span>
+                <div class="card-actions justify-evenly mb-4">
+                  <div class="badge badge-outline px-5 py-4 font-semibold">
+                    <i class="fa-solid fa-copy"></i>Copy
+                  </div>
+                  <div class="badge badge-outline px-7 py-4 bg-[#00a63e] text-white">
+                    <i class="fa-solid fa-phone"></i>Call
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card bg-base-100 w-70 shadow-2xl p-5">
+              <div class="flex justify-between items-center">
+                <img class="w-10" src="./assets/emergency.png" alt="Shoes" />
+                <i class="fa-regular fa-heart text-2xl"></i>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title font-bold">Emergency Help Service</h2>
+                <p class="text-gray-400"></p>
+                <h4 class="card-title text-lg">999</h4>
+                <span class="w-17 bg-slate-300 text-gray-400 px-2 py-1 rounded-xl">Univesal</span>
+                <div class="card-actions justify-evenly mb-4">
+                  <div class="badge badge-outline px-5 py-4 font-semibold">
+                    <i class="fa-solid fa-copy"></i>Copy
+                  </div>
+                  <div class="badge badge-outline px-7 py-4 bg-[#00a63e] text-white">
+                    <i class="fa-solid fa-phone"></i>Call
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card bg-base-100 w-70 shadow-2xl p-5">
+              <div class="flex justify-between items-center">
+                <img class="w-10" src="./assets/emergency.png" alt="Shoes" />
+                <i class="fa-regular fa-heart text-2xl"></i>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title font-bold">Emergency Help Service</h2>
+                <p class="text-gray-400"></p>
+                <h4 class="card-title text-lg">999</h4>
+                <span class="w-17 bg-slate-300 text-gray-400 px-2 py-1 rounded-xl">Univesal</span>
+                <div class="card-actions justify-evenly mb-4">
+                  <div class="badge badge-outline px-5 py-4 font-semibold">
+                    <i class="fa-solid fa-copy"></i>Copy
+                  </div>
+                  <div class="badge badge-outline px-7 py-4 bg-[#00a63e] text-white">
+                    <i class="fa-solid fa-phone"></i>Call
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card bg-base-100 w-70 shadow-2xl p-5">
+              <div class="flex justify-between items-center">
+                <img class="w-10" src="./assets/emergency.png" alt="Shoes" />
+                <i class="fa-regular fa-heart text-2xl"></i>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title font-bold">Emergency Help Service</h2>
+                <p class="text-gray-400"></p>
+                <h4 class="card-title text-lg">999</h4>
+                <span class="w-17 bg-slate-300 text-gray-400 px-2 py-1 rounded-xl">Univesal</span>
+                <div class="card-actions justify-evenly mb-4">
+                  <div class="badge badge-outline px-5 py-4 font-semibold">
+                    <i class="fa-solid fa-copy"></i>Copy
+                  </div>
+                  <div class="badge badge-outline px-7 py-4 bg-[#00a63e] text-white">
+                    <i class="fa-solid fa-phone"></i>Call
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
     </main>
