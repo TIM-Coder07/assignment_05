@@ -1,35 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assignment || Five (5)</title>
     <!-- daisyui -->
-<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-<!-- tailwindcss -->
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<!-- font-awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- tailwindcss -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
     <header class="flex items-center justify-between p-5">
-        <div class="header_left flex">
-            <img class=" w-12 mr-2" src="./assets/logo.png" alt="">
-            <p class="font-bold  text-green-700">Emergency <br> Service</p>
+      <div class="header_left flex">
+        <img class="w-12 mr-2" src="./assets/logo.png" alt="" />
+        <p class="font-bold text-green-700">
+          Emergency <br />
+          Service
+        </p>
+      </div>
+      <div class="header_right flex">
+        <div class="flex mr-5 bg-[#41ff6b1a] p-4 rounded-[30px]">
+          <p class="font-bold">0</p>
+          <img class="w-7 ml-3" src="./assets/heart.png" alt="" />
         </div>
-        <div class="header_right flex ">
-            <div class="flex mr-5 bg-[#41ff6b1a] p-4 rounded-[30px]">
-                <p class="font-bold">0</p>
-                <img class="w-7 ml-3" src="./assets/heart.png" alt="">
-            </div>
-            <div class="flex mr-5 bg-[#41ff6b1a] p-4 rounded-[30px]">
-                <p class="font-bold">100</p>
-                <img class="w-7 ml-3" src="./assets/coin.png" alt="">
-            </div>
-            <button class="mr-5 bg-green-800 text-white px-7 rounded-[10px]" id="copy_btn"> Copy</button>
+        <div class="flex mr-5 bg-[#41ff6b1a] p-4 rounded-[30px]">
+          <p class="font-bold">100</p>
+          <img class="w-7 ml-3" src="./assets/coin.png" alt="" />
         </div>
+        <button
+          class="mr-5 bg-green-800 text-white px-7 rounded-[10px]"
+          id="copy_btn"
+        >
+          Copy
+        </button>
+      </div>
     </header>
 
-
-</body>
+    <main>
+      <section class="p-[50px] bg-green-800">
+        <div class="first_section items-center justify-center text-center">
+          <img class="mx-auto w-[300px]" src="./assets/logo-dark.png" alt="" />
+          <h1 class="font-bold text-white text-3xl mt-5 mb-5">Emergency Service Directory</h1>
+          <p class="text-white font-semibold">
+            Government Emergency Services at Your Fingertip – A Project by
+            Government of the People’s Republic of Bangladesh
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
