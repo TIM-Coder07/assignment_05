@@ -39,9 +39,8 @@ fetch(API_URL)
     console.log(err);
   });
 
-// Function to render issues based on tab or search
+// Function show issues based on tab or search
 function renderIssues(filter) {
-  // Decide which issues to show
   let issuesToRender = [];
 
   if (typeof filter === "string") {
@@ -52,13 +51,15 @@ function renderIssues(filter) {
   } else {
     issuesToRender = filter;
   }
+  //  Count Update
+  const count = document.getElementById("allCount");
+  count.textContent = `(${issuesToRender.length})`;
 
   // Empty state
   if (!issuesToRender.length) {
     content.innerHTML = `<p class="text-gray-500">No issues found.</p>`;
     return;
   }
-
   // Render cards
   content.innerHTML = issuesToRender
     .map((issue) => {
@@ -69,6 +70,13 @@ function renderIssues(filter) {
      data-id="${issue.id}">
 
   <div class="p-6">
+
+<!-- Icon is here  -->
+      <div class="mb-2">
+      ${isOpen 
+      ? '<img src="assets/Open-Status.png"/>' 
+      :'<img src="assets/Closed.png"/>'
+    }</div>
 
     <!-- Title -->
     <h3 class="text-lg font-bold text-gray-800 mb-2">
@@ -94,11 +102,18 @@ function renderIssues(filter) {
 
       <!-- Priority -->
       <div>
-        <span class="text-gray-500 font-medium">Priority</span><br>
-        <span class="font-semibold text-gray-700">
-          ${issue.priority}
-        </span>
-      </div>
+  <span class="text-gray-500 font-medium">Priority</span><br>
+  <span class="font-semibold text-gray-700 
+        ${
+          issue.priority === "high"
+            ? "text-red-600"
+            : issue.priority === "medium"
+              ? "text-yellow-600"
+              : "text-green-600"
+        }">
+    ${issue.priority}
+  </span>
+</div>
 
       <!-- Author -->
       <div>
@@ -112,22 +127,26 @@ function renderIssues(filter) {
       <div>
         <span class="text-gray-500 font-medium">Labels</span><br>
         <div class="flex flex-wrap mt-1 gap-1">
-          ${issue.labels.map(label => `
-            <span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-700">
+          ${issue.labels
+            .map(
+              (label) => `
+            <span class="px-2 py-1 text-xs font-medium rounded-full bg-orange-300 ">
               ${label}
             </span>
-          `).join("")}
+          `,
+            )
+            .join("")}
         </div>
       </div>
 
     </div>
 
     <!-- Footer -->
-    <div class="flex justify-between items-center text-xs text-gray-400">
+    <div class = "flex justify-between items-center text-xs text-gray-400">
       <span>
         Created: ${new Date(issue.createdAt).toLocaleDateString()}
       </span>
-      <span class="text-blue-500 font-medium">
+      <span class = "text-blue-500 font-medium">
         View Details →
       </span>
     </div>
@@ -174,36 +193,14 @@ tabs.forEach((tab) => {
   });
 });
 
-// Tab Count 
-function updateTabCounts() {
-  const countAll = allIssues.length;
-  const countOpen = allIssues.filter(issue => issue.status.toLowerCase() === "open").length;
-  const countClosed = allIssues.filter(issue => issue.status.toLowerCase() === "closed").length;
-
-  document.getElementById("count-all").innerText = countAll;
-  document.getElementById("count-open").innerText = countOpen;
-  document.getElementById("count-closed").innerText = countClosed;
-}
-
 // Show only active tab count
 function showActiveTabCount(tabName) {
   const spans = document.querySelectorAll(".tab-count");
-  spans.forEach(span => span.classList.add("hidden")); // hide all
+  spans.forEach((span) => span.classList.add("hidden"));
 
   // Show only active tab
   document.getElementById(`count-${tabName}`).classList.remove("hidden");
 }
-
-fetch(API_URL)
-  .then(res => res.json())
-  .then(data => {
-    allIssues = data.data;
-
-    renderIssues("all");
-    updateTabCounts();
-    showActiveTabCount("all");
-  });
-
 
 // Modal card Showing
 document.addEventListener("click", function (e) {
@@ -211,21 +208,25 @@ document.addEventListener("click", function (e) {
   if (!card) return;
 
   const id = card.dataset.id;
-  const issue = allIssues.find(item => item.id == id);
+  const issue = allIssues.find((item) => item.id == id);
   if (!issue) return;
 
   document.getElementById("modal-title").innerText = issue.title;
   document.getElementById("modal-description").innerText = issue.description;
   document.getElementById("modal-status").innerText = issue.status;
   document.getElementById("modal-priority").innerText = issue.priority;
-  document.getElementById("modal-author").innerText = issue.author;
+  document.getElementById("modal-author").innerText = issue.assignee;
 
   // Labels
-  const labelsHTML = issue.labels.map(label => `
-    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-700">
+  const labelsHTML = issue.labels
+    .map(
+      (label) => `
+    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-orange-300">
       ${label}
     </span>
-  `).join("");
+  `,
+    )
+    .join("");
   document.getElementById("modal-labels").innerHTML = labelsHTML;
 
   // Created date

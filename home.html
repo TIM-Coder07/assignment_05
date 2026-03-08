@@ -40,26 +40,35 @@
     <main>
  <div class="max-w-7xl mx-auto px-4 py-4">
 
-  <!-- Tabs data-->
-<div class="tabs mb-4">
-  <button class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded mr-2" data-tab="all">
-    All (<span class="tab-count hidden" id="count-all">0</span>)
-  </button>
-  <button class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded mr-2" data-tab="open">
-    Open (<span class="tab-count hidden" id="count-open">0</span>)
-  </button>
-  <button class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded" data-tab="closed">
-    Closed (<span class="tab-count hidden" id="count-closed">0</span>)
-  </button>
-</div>
-
-
     <!-- Tabs -->
     <div class="flex space-x-2 mb-6">
       <button class="tab-btn px-4 py-2 rounded bg-green-500 text-white font-semibold" data-tab="all">All</button>
       <button class="tab-btn px-4 py-2 rounded bg-gray-200 text-gray-700 font-semibold" data-tab="open">Open</button>
       <button class="tab-btn px-4 py-2 rounded bg-gray-200 text-gray-700 font-semibold" data-tab="closed">Closed</button>
     </div>
+
+  <!-- Tabs data-->
+<div class="tabs mb-4 flex justify-between items-center bg-gray-200 p-4 rounded">
+
+  <!-- Left Side Tabs -->
+  <div class="flex gap-6 text-lg ">
+    <p><span id="allCount">(0)</span> Issues count</p>
+  </div>
+
+  <!-- Right Side Status -->
+  <div class="flex gap-6 items-center">
+    <p class="flex items-center gap-2">
+      <span class="w-3 h-3 bg-green-700 rounded-full inline-block"></span>
+      Open
+    </p>
+
+    <p class="flex items-center gap-2">
+      <span class="w-3 h-3 bg-purple-700 rounded-full inline-block"></span>
+      Close
+    </p>
+  </div>
+
+</div>
 
   <!-- Issues Container -->
   <div id="tab-content" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 border rounded bg-gray-50 min-h-[200px]">
@@ -104,7 +113,7 @@
 
       <!-- Author -->
       <div>
-        <p class="text-gray-500 font-medium">Author</p>
+        <p class="text-gray-500 font-medium">Assignee</p>
         <p id="modal-author" class="font-semibold text-gray-700 mt-1"></p>
       </div>
 
