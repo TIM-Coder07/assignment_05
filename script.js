@@ -65,55 +65,77 @@ function renderIssues(filter) {
       const isOpen = issue.status.toLowerCase() === "open";
 
       return `
-        <div class="issue-card p-4 rounded shadow bg-white ${isOpen ? "border-t-4 border-green-500" : "border-t-4 border-purple-500"} cursor-pointer"
-             data-id="${issue.id}">
+<div class="issue-card cursor-pointer bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 border-t-4 ${isOpen ? "border-green-500" : "border-purple-500"}"
+     data-id="${issue.id}">
 
-          <div class="bg-white shadow-md rounded-lg p-6 mb-4 hover:shadow-xl transition duration-300">
+  <div class="p-6">
 
-            <h3 class="text-xl font-bold text-gray-800 mb-3">
-              ${issue.title}
-            </h3>
+    <!-- Title -->
+    <h3 class="text-lg font-bold text-gray-800 mb-2">
+      ${issue.title}
+    </h3>
 
-            <p class="text-gray-600 mb-4">
-              ${issue.description}
-            </p>
+    <!-- Description -->
+    <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+      ${issue.description}
+    </p>
 
-            <div class="grid grid-cols-2 gap-4 text-sm text-gray-700 mb-3">
+    <!-- Info Grid -->
+    <div class="grid grid-cols-2 gap-4 text-sm mb-4">
 
-              <p>
-                <span class="font-semibold">Status:</span>
-                <span class="${isOpen ? "text-green-600" : "text-red-600"}">
-                  ${issue.status}
-                </span>
-              </p>
+      <!-- Status -->
+      <div>
+        <span class="text-gray-500 font-medium">Status</span><br>
+        <span class="inline-block mt-1 px-2 py-1 text-xs font-semibold rounded-full
+        ${isOpen ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}">
+          ${issue.status}
+        </span>
+      </div>
 
-              <p>
-                <span class="font-semibold">Priority:</span>
-                ${issue.priority}
-              </p>
+      <!-- Priority -->
+      <div>
+        <span class="text-gray-500 font-medium">Priority</span><br>
+        <span class="font-semibold text-gray-700">
+          ${issue.priority}
+        </span>
+      </div>
 
-              <p>
-                <span class="font-semibold">Author:</span>
-                ${issue.author}
-              </p>
+      <!-- Author -->
+      <div>
+        <span class="text-gray-500 font-medium">Author</span><br>
+        <span class="font-semibold text-gray-700">
+          ${issue.author}
+        </span>
+      </div>
 
-              <p>
-                <span class="font-semibold">Label:</span>
-                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">
-                  ${issue.label}
-                </span>
-              </p>
-
-            </div>
-
-            <p class="text-gray-500 text-xs">
-              Created At: ${new Date(issue.createdAt).toLocaleDateString()}
-            </p>
-
-          </div>
-
+      <!-- Labels -->
+      <div>
+        <span class="text-gray-500 font-medium">Labels</span><br>
+        <div class="flex flex-wrap mt-1 gap-1">
+          ${issue.labels.map(label => `
+            <span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-700">
+              ${label}
+            </span>
+          `).join("")}
         </div>
-      `;
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="flex justify-between items-center text-xs text-gray-400">
+      <span>
+        Created: ${new Date(issue.createdAt).toLocaleDateString()}
+      </span>
+      <span class="text-blue-500 font-medium">
+        View Details →
+      </span>
+    </div>
+
+  </div>
+
+</div>
+`;
     })
     .join("");
 }
@@ -152,17 +174,44 @@ tabs.forEach((tab) => {
   });
 });
 
+// Tab Count 
+function updateTabCounts() {
+  const countAll = allIssues.length;
+  const countOpen = allIssues.filter(issue => issue.status.toLowerCase() === "open").length;
+  const countClosed = allIssues.filter(issue => issue.status.toLowerCase() === "closed").length;
+
+  document.getElementById("count-all").innerText = countAll;
+  document.getElementById("count-open").innerText = countOpen;
+  document.getElementById("count-closed").innerText = countClosed;
+}
+
+// Show only active tab count
+function showActiveTabCount(tabName) {
+  const spans = document.querySelectorAll(".tab-count");
+  spans.forEach(span => span.classList.add("hidden")); // hide all
+
+  // Show only active tab
+  document.getElementById(`count-${tabName}`).classList.remove("hidden");
+}
+
+fetch(API_URL)
+  .then(res => res.json())
+  .then(data => {
+    allIssues = data.data;
+
+    renderIssues("all");
+    updateTabCounts();
+    showActiveTabCount("all");
+  });
+
+
 // Modal card Showing
 document.addEventListener("click", function (e) {
-
   const card = e.target.closest(".issue-card");
-
   if (!card) return;
 
   const id = card.dataset.id;
-
-  const issue = allIssues.find((item) => item.id == id);
-
+  const issue = allIssues.find(item => item.id == id);
   if (!issue) return;
 
   document.getElementById("modal-title").innerText = issue.title;
@@ -171,6 +220,17 @@ document.addEventListener("click", function (e) {
   document.getElementById("modal-priority").innerText = issue.priority;
   document.getElementById("modal-author").innerText = issue.author;
 
-  document.getElementById("my_modal_1").showModal();
+  // Labels
+  const labelsHTML = issue.labels.map(label => `
+    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-700">
+      ${label}
+    </span>
+  `).join("");
+  document.getElementById("modal-labels").innerHTML = labelsHTML;
 
+  // Created date
+  document.getElementById("modal-date").innerText =
+    `Created At: ${new Date(issue.createdAt).toLocaleDateString()}`;
+
+  document.getElementById("my_modal_1").showModal();
 });

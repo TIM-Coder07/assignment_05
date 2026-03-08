@@ -40,7 +40,20 @@
     <main>
  <div class="max-w-7xl mx-auto px-4 py-4">
 
-  <!-- Tabs -->
+  <!-- Tabs data-->
+<div class="tabs mb-4">
+  <button class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded mr-2" data-tab="all">
+    All (<span class="tab-count hidden" id="count-all">0</span>)
+  </button>
+  <button class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded mr-2" data-tab="open">
+    Open (<span class="tab-count hidden" id="count-open">0</span>)
+  </button>
+  <button class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded" data-tab="closed">
+    Closed (<span class="tab-count hidden" id="count-closed">0</span>)
+  </button>
+</div>
+
+
     <!-- Tabs -->
     <div class="flex space-x-2 mb-6">
       <button class="tab-btn px-4 py-2 rounded bg-green-500 text-white font-semibold" data-tab="all">All</button>
@@ -59,20 +72,57 @@
 
    <!-- Open the modal using ID.showModal() method -->
 <dialog id="my_modal_1" class="modal">
-  <div class="modal-box">
+  <div class="modal-box max-w-2xl">
 
-    <h3 id="modal-title" class="text-xl font-bold"></h3>
-    <p id="modal-description" class="py-2"></p>
+    <!-- Title -->
+    <h3 id="modal-title" class="text-2xl font-bold text-gray-800 mb-2"></h3>
 
-    <p><b>Status:</b> <span id="modal-status"></span></p>
-    <p><b>Priority:</b> <span id="modal-priority"></span></p>
-    <p><b>Author:</b> <span id="modal-author"></span></p>
-    <p><b>Label:</b> <span id="modal-label"></span></p>
-    <p class="text-sm text-gray-500" id="modal-date"></p>
+    <!-- Description -->
+    <p id="modal-description" class="text-gray-600 mb-4 leading-relaxed"></p>
 
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Issue Info -->
+    <div class="grid grid-cols-2 gap-4 text-sm">
+
+      <!-- Status -->
+      <div>
+        <p class="text-gray-500 font-medium">Status</p>
+        <span id="modal-status"
+          class="inline-block mt-1 px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-700">
+        </span>
+      </div>
+
+      <!-- Priority -->
+      <div>
+        <p class="text-gray-500 font-medium">Priority</p>
+        <span id="modal-priority"
+          class="inline-block mt-1 px-3 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-700">
+        </span>
+      </div>
+
+      <!-- Author -->
+      <div>
+        <p class="text-gray-500 font-medium">Author</p>
+        <p id="modal-author" class="font-semibold text-gray-700 mt-1"></p>
+      </div>
+
+      <!-- Labels -->
+      <div>
+        <p class="text-gray-500 font-medium">Labels</p>
+        <div id="modal-labels" class="flex flex-wrap gap-2 mt-1"></div>
+      </div>
+
+    </div>
+
+    <!-- Date -->
+    <p class="text-xs text-gray-400 mt-4" id="modal-date"></p>
+
+    <!-- Close Button -->
     <div class="modal-action">
       <form method="dialog">
-        <button class="btn">Close</button>
+        <button class="btn btn-neutral">Close</button>
       </form>
     </div>
 
