@@ -1,27 +1,21 @@
 // Log in part
-
 document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("loginForm");
-  const error = document.getElementById("error");
+      const form = document.getElementById("loginForm");
+      const error = document.getElementById("error");
 
-  if (!form) {
-    console.error("Login form not found! Check HTML id or script position.");
-    return;
-  }
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
 
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
-
-    if (username === "admin" && password === "admin123") {
-      window.location.href = "index.html";
-    } else {
-      error.classList.remove("hidden");
-    }
-  });
-});
+        if (username === "admin" && password === "admin123") {
+          window.location.href = "index.html";
+        } else {
+          error.style.display = "block";
+        }
+      });
+    });
 
 // All Data load
 const API_URL = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
