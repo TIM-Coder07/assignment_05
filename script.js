@@ -39,6 +39,33 @@ fetch(API_URL)
     console.log(err);
   });
 
+  // Tab click events
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const tabName = tab.dataset.tab;
+
+    //Active button style
+    tabs.forEach((t) => {
+      t.classList.remove("bg-green-500", "text-white");
+      t.classList.add("bg-gray-200", "text-gray-700");
+    });
+    tab.classList.add("bg-green-500", "text-white");
+    tab.classList.remove("bg-gray-200", "text-gray-700");
+
+    // Show Loading spinner
+    content.innerHTML = `
+      <div class="flex justify-center items-center py-10">
+        <span class="loading loading-spinner text-warning"></span>
+      </div>
+    `;
+
+    // Add delay for show loder spiner
+    setTimeout(() => {
+      renderIssues(tabName);
+    }, 200);
+  });
+});
+
 // Function show issues based on tab or search
 function renderIssues(filter) {
   let issuesToRender = [];
@@ -55,11 +82,12 @@ function renderIssues(filter) {
   const count = document.getElementById("allCount");
   count.textContent = `(${issuesToRender.length})`;
 
-  // Empty state
+  // Empty data validation
   if (!issuesToRender.length) {
     content.innerHTML = `<p class="text-gray-500">No issues found.</p>`;
     return;
   }
+  
   // Render cards
   content.innerHTML = issuesToRender
     .map((issue) => {
@@ -173,24 +201,6 @@ searchBtn.addEventListener("click", () => {
   );
   renderIssues(filtered);
   searchInput.value = "";
-});
-
-// Tab click events
-tabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    const tabName = tab.dataset.tab;
-
-    // Active button style
-    tabs.forEach((t) => {
-      t.classList.remove("bg-green-500", "text-white");
-      t.classList.add("bg-gray-200", "text-gray-700");
-    });
-    tab.classList.add("bg-green-500", "text-white");
-    tab.classList.remove("bg-gray-200", "text-gray-700");
-
-    // Render issues for this tab
-    renderIssues(tabName);
-  });
 });
 
 // Show only active tab count
